@@ -1,4 +1,5 @@
-const API_BASE = "http://localhost:8080";
+const API_BASE = "https://ourdojo-backend.onrender.com";
+const WS_URL = "wss://ourdojo-backend.onrender.com/ws";
 const CLOUD_NAME = "dfqqy3br";
 const UPLOAD_PRESET = "ourDojo"; // Your unsigned preset
 
