@@ -31,27 +31,23 @@ func SaveMessage(
 }
 
 func GetLastMessages(ctx context.Context, conversationID string, limit int) ([]map[string]string, error) {
-	rows, err := db.Pool.Query(
-		ctx,
-		`SELECT sender_id, type, content, media_url, created_at
-		 FROM messages
-		 WHERE conversation_id = $1
-		 ORDER BY created_at ASC
-		 LIMIT $2`,
-		conversationID,
-		limit,
-	)
+	rows, err := db.Pool.Query(ctx, `
+		SELECT sender_id, type, content, media_url
+		FROM messages
+		WHERE conversation_id = $1
+		ORDER BY created_at ASC
+		LIMIT $2
+	`, conversationID, limit)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
 
 	var messages []map[string]string
+
 	for rows.Next() {
 		var senderID, msgType, content, mediaURL string
-		var createdAt string
-
-		_ = rows.Scan(&senderID, &msgType, &content, &mediaURL, &createdAt)
+		rows.Scan(&senderID, &msgType, &content, &mediaURL)
 
 		messages = append(messages, map[string]string{
 			"sender_id": senderID,
@@ -60,6 +56,6 @@ func GetLastMessages(ctx context.Context, conversationID string, limit int) ([]m
 			"media_url": mediaURL,
 		})
 	}
+
 	return messages, nil
 }
-

@@ -1,37 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OurDojo</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OurDojo</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="chat-body">
 
+  <header class="chat-header">
+    <span class="brand-text">OurDojo</span>
+    <div class="header-right">
+      <span class="chat-with">Chatting with: <span id="otherUser" class="other-user-name"></span></span>
+      <div class="header-status">
+        <span class="status-dot"></span>
+        <span class="status-text">Connected</span>
+      </div>
+    </div>
+  </header>
 
-<header class="chat-header">
-<img src="logo.png" class="header-logo" />
-<span>OurDojo</span>
-</header>
+  <div class="messages-wrapper">
+    <div class="logo-watermark"></div>
+    <div id="messages" class="messages-container"></div>
+  </div>
 
+  <div id="emojiPanel" class="emoji-panel hidden">
+    <div class="emoji-grid">
+      <span class="emoji-item">😀</span>
+      <span class="emoji-item">😁</span>
+      <span class="emoji-item">😂</span>
+      <span class="emoji-item">🤣</span>
+      <span class="emoji-item">😍</span>
+      <span class="emoji-item">😘</span>
+      <span class="emoji-item">🥰</span>
+      <span class="emoji-item">😭</span>
+      <span class="emoji-item">😡</span>
+      <span class="emoji-item">🤔</span>
+      <span class="emoji-item">❤️</span>
+      <span class="emoji-item">💕</span>
+      <span class="emoji-item">💛</span>
+      <span class="emoji-item">✨</span>
+      <span class="emoji-item">🔥</span>
+      <span class="emoji-item">👍</span>
+      <span class="emoji-item">🙏</span>
+      <span class="emoji-item">🫶</span>
+      <span class="emoji-item">💪</span>
+      <span class="emoji-item">🎮</span>
+    </div>
+  </div>
 
-<div id="messages" class="messages"></div>
+  <div class="chat-input-container">
+    <button class="input-btn emoji-btn" onclick="toggleEmoji()" title="Emoji">
+      😊
+    </button>
+    
+    <input 
+      id="messageInput" 
+      class="message-input" 
+      placeholder="Type something..." 
+      autocomplete="off"
+    />
+    
+    <input type="file" id="fileInput" hidden onchange="uploadFile()" accept="image/*,video/*,.gif" />
+    
+    <button class="input-btn attach-btn" onclick="pickFile()" title="Attach">
+      📎
+    </button>
+    
+    <button class="input-btn send-btn" onclick="sendText()" title="Send">
+      ➤
+    </button>
+  </div>
 
-
-<div id="emojiPanel" class="emoji-panel hidden">
-😀 😁 😂 😍 😘 😭 😡 ❤️ 💕 👍 🙏 🔥 🥰 🫶 ✨
-</div>
-
-
-<div class="chat-input">
-<button onclick="toggleEmoji()">😊</button>
-<input id="messageInput" placeholder="Type something…" />
-<input type="file" id="fileInput" hidden onchange="uploadFile()" />
-<button onclick="pickFile()">📎</button>
-<button onclick="sendText()">➤</button>
-</div>
-
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

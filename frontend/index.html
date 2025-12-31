@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OurDojo</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OurDojo</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="centered">
+<body class="login-body">
 
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-glow"></div>
+      
+      <img src="logo.png" class="login-logo" alt="OurDojo" />
 
-<div class="card">
-<img src="logo.png" class="logo" alt="OurDojo" />
-<h1>OurDojo</h1>
-<p class="subtitle">Just us.</p>
+      <div class="input-group">
+        <input id="username" placeholder="username" autocomplete="off" />
+      </div>
 
+      <div class="input-group">
+        <input id="password" type="password" placeholder="password" />
+      </div>
 
-<input id="username" placeholder="Username" />
-<input id="password" type="password" placeholder="Password" />
+      <button class="login-btn" onclick="login()">
+        <span>Enter</span>
+      </button>
 
+      <p id="error" class="error"></p>
+    </div>
+  </div>
 
-<button onclick="login()">Login</button>
-<p id="error" class="error"></p>
-</div>
-
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
