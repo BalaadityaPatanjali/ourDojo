@@ -1,7 +1,10 @@
 package server
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Start() {
-	fmt.Println("OurDojo server starting...")
+	fmt.Println("OurDojo server started and DB connected")
+	select {}
 }
