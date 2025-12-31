@@ -80,7 +80,9 @@ if (window.location.pathname.includes("chat.html")) {
 
 function initChat() {
   const token = localStorage.getItem("token");
-  socket = new WebSocket(`ws://localhost:8080/ws?token=${token}`);
+  socket = new WebSocket(
+  `wss://ourdojo-backend.onrender.com/ws?token=${token}`
+);
 
   socket.onopen = () => {
     isConnected = true;
