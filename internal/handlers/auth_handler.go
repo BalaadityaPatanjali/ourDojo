@@ -9,9 +9,16 @@ import (
 	"github.com/BalaadityaPatanjali/ourDojo/internal/models"
 	"github.com/BalaadityaPatanjali/ourDojo/internal/repository"
 	"github.com/BalaadityaPatanjali/ourDojo/pkg/utils"
+	"github.com/BalaadityaPatanjali/ourDojo/internal/auth"
+
 )
 
 type RegisterRequest struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type LoginRequest struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
@@ -65,3 +72,42 @@ func Register(w http.ResponseWriter, r *http.Request) {
 		"message": "user registered successfully",
 	})
 }
+
+func Login(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var req LoginRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, "invalid request body", http.StatusBadRequest)
+		return
+	}
+
+	user, err := repository.GetUserByUsername(
+		context.Background(),
+		req.Username,
+	)
+	if err != nil {
+		http.Error(w, "invalid credentials", http.StatusUnauthorized)
+		return
+	}
+
+	if !utils.CheckPassword(req.Password, user.PasswordHash) {
+		http.Error(w, "invalid credentials", http.StatusUnauthorized)
+		return
+	}
+
+	token, err := auth.GenerateToken(user.ID, user.Username)
+	if err != nil {
+		http.Error(w, "failed to generate token", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{
+		"token": token,
+	})
+}
+
