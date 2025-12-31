@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  font-family: 'ArcadeClassic', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #eef3ea;
+  color: #333;
+}
+
+.logo {
+  width: 140px;
+  margin-bottom: 1rem;
+}
+
+.header-logo {
+  width: 36px;
+  margin-right: 0.5rem;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  width: 90%;
+  max-width: 360px;
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.subtitle {
+  color: #777;
+  margin-bottom: 1.5rem;
+}
+
+.card input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.card button {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: none;
+  background: #f5b7b1;
+  font-size: 1rem;
+}
+
+.error {
+  color: #d33;
+  margin-top: 0.5rem;
+}
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  background: #f5b7b1;
+  font-weight: 600;
+}
+
+.messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.message {
+  max-width: 70%;
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+}
+
+.me {
+  background: #dcf8c6;
+  margin-left: auto;
+}
+
+.other {
+  background: #fff;
+  border: 1px solid #eee;
+}
+
+.message img, .message video {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.chat-input {
+  display: flex;
+  padding: 0.6rem;
+  border-top: 1px solid #ddd;
+  background: #fff;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.7rem;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+}
+
+.chat-input button {
+  margin-left: 0.4rem;
+  border-radius: 50%;
+  border: none;
+  width: 44px;
+  height: 44px;
+  background: #f5b7b1;
+}
+
+.emoji-panel {
+  padding: 0.5rem;
+  background: #fff;
+  text-align: center;
+  font-size: 1.4rem;
+}

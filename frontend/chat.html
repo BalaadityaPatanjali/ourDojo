@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OurDojo</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="chat-body">
+
+
+<header class="chat-header">
+<img src="logo.png" class="header-logo" />
+<span>OurDojo</span>
+</header>
+
+
+<div id="messages" class="messages"></div>
+
+
+<div id="emojiPanel" class="emoji-panel hidden">
+😀 😁 😂 😍 😘 😭 😡 ❤️ 💕 👍 🙏 🔥 🥰 🫶 ✨
+</div>
+
+
+<div class="chat-input">
+<button onclick="toggleEmoji()">😊</button>
+<input id="messageInput" placeholder="Type something…" />
+<input type="file" id="fileInput" hidden onchange="uploadFile()" />
+<button onclick="pickFile()">📎</button>
+<button onclick="sendText()">➤</button>
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>

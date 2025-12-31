@@ -3,7 +3,7 @@ package auth
 import (
 	"os"
 	"time"
-
+	"errors"
 	"github.com/golang-jwt/jwt/v5"
 )
 
@@ -26,4 +26,26 @@ func GenerateToken(userID, username string) (string, error) {
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString(jwtSecret)
+}
+
+func ParseToken(tokenString string) (*Claims, error) {
+
+	token, err := jwt.ParseWithClaims(
+		tokenString,
+		&Claims{},
+		func(token *jwt.Token) (interface{}, error) {
+			return jwtSecret, nil
+		},
+	)
+
+	if err != nil || !token.Valid {
+		return nil, errors.New("invalid token")
+	}
+
+	claims, ok := token.Claims.(*Claims)
+	if !ok {
+		return nil, errors.New("invalid token claims")
+	}
+
+	return claims, nil
 }
